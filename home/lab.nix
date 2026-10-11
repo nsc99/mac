@@ -22,12 +22,13 @@ in
 
   programs.k9s.enable = true;
 
-  # Admin kubeconfig for the k3s cluster, context `lab`.
+  # Admin kubeconfig for the k3s cluster, context `lab`. Writable so kubens can
+  # set a namespace on it; sops-nix restores it on every activation.
   sops.secrets.kubeconfig-lab = {
     key = "kube/lab";
     path = kubeconfig;
+    mode = "0600";
   };
-  home.sessionVariables.KUBECONFIG = kubeconfig;
 
   # Hosts are reached as <host>.lab by the operator user; the lab repo's
   # nix/scripts/rebuild.sh deploys over this.
