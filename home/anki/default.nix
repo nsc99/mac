@@ -22,6 +22,7 @@
         };
       })
       pkgs.ankiAddons.yomichan-forvo-server
+      (pkgs.callPackage ./speed-focus-mode.nix { })
     ];
   };
 
