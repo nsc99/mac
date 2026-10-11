@@ -43,6 +43,7 @@ New program → add `home/<name>.nix`, import it in `home/default.nix`, `git add
 
 - Conventional commits: `type(scope): subject` (e.g. `feat(ghostty): ...`, `chore: ...`), one logical change per commit, each commit must build on its own.
 - No `Co-Authored-By` or other AI attribution trailers in commit messages.
+- Never push (no `git push`, `gh repo create --push`, etc.); committing locally is fine, pushing is left to the user.
 
 ## Gotchas
 
