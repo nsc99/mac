@@ -4,7 +4,7 @@
     settings = {
       user = {
         name = "nsc99";
-        email = "mail@schweigert.xyz";
+        email = "nsc99@schweigert.xyz";
       };
       init.defaultBranch = "master";
       pull.rebase = true;
