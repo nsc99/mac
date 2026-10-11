@@ -17,7 +17,7 @@ jobs:
     # Apple Silicon, so aarch64-darwin builds natively.
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: DeterminateSystems/nix-installer-action@main
       # Pre-commit hooks (nixfmt, statix, deadnix) on all files.
       - run: nix flake check
