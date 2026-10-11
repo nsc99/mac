@@ -2,6 +2,7 @@
   imports = [
     ./shell.nix
     ./git.nix
+    ./gh.nix
     ./ghostty.nix
     ./sops.nix
     ./anki
