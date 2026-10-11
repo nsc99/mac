@@ -13,6 +13,13 @@ git add -A
 # Verify a change builds (do this after every edit)
 nix build .#darwinConfigurations.mac.system --no-link
 
+# Format and lint (nixfmt, statix, deadnix; same as the pre-commit hook)
+nix fmt
+nix flake check
+
+# Enter the dev shell once per clone to install the git pre-commit hook
+nix develop
+
 # See what a change does to the installed system (empty output = no package changes)
 nix store diff-closures /run/current-system \
   $(nix eval --raw .#darwinConfigurations.mac.system.outPath)
@@ -30,10 +37,11 @@ sops secrets/secrets.yaml
 
 ## Architecture
 
-- `flake.nix` only defines inputs and a `mkDarwin { hostname, user }` helper that loads `hosts/<hostname>` + `modules/darwin`. Both `inputs` and `user` are passed as `specialArgs`, so modules take `{ inputs, user, ... }` instead of hardcoding the username or destructuring inputs in `outputs`.
+- `flake.nix` defines inputs and a `mkDarwin { hostname, user }` helper that loads `hosts/<hostname>` + `modules/darwin`. Both `inputs` and `user` are passed as `specialArgs`, so modules take `{ inputs, user, ... }` instead of hardcoding the username or destructuring inputs in `outputs`.
 - `hosts/<hostname>/default.nix` holds machine-specific settings (platform, user account, `stateVersion`) and is where `home-manager.users.${user}` is pointed at `home/`.
 - `modules/darwin/` is system-level config; `default.nix` imports each file. `home-manager.nix` there wires in home-manager and sops-nix (both darwin and HM modules) and forwards `inputs` to HM via `extraSpecialArgs`.
 - `home/` is home-manager config; `home/default.nix` imports one file (or directory with `default.nix`) per program. Non-Nix assets live next to the module that uses them (e.g. `home/vscode/settings.json`).
+- `flake.nix` also defines `formatter` (nixfmt), `checks.pre-commit` and a dev shell via git-hooks.nix; the hook runs nixfmt, statix and deadnix on staged files.
 - `overlays/default.nix` is a single overlay applied in `modules/darwin/nix.nix`; with `useGlobalPkgs = true` it also applies to home-manager.
 - Secrets: `secrets/secrets.yaml` is sops-encrypted (rules in `.sops.yaml`). Modules declare `sops.secrets.<name>.key = "path/in/yaml"` and consume `config.sops.secrets.<name>.path` (see `home/anki/default.nix`). Never commit it decrypted.
 
@@ -50,5 +58,5 @@ New program → add `home/<name>.nix`, import it in `home/default.nix`, `git add
 - Many nixpkgs GUI apps are Linux-only from source on darwin; check `meta.platforms` and look for a `-bin` variant (Ghostty uses `pkgs.ghostty-bin`).
 - Prefer home-manager's current option names (e.g. `programs.git.settings.user.*`, not deprecated `userName`/`userEmail`); check with the options eval above.
 - `homebrew.onActivation.cleanup = "zap"`: any cask not listed in `modules/darwin/homebrew.nix` is uninstalled on switch.
-- `home/vscode/settings.json` points nixd at `darwinConfigurations.mac` for option completion; renaming the config breaks that. It also references `nixfmt`, which isn't installed.
+- `home/vscode/settings.json` points nixd at `darwinConfigurations.mac` for option completion; renaming the config breaks that. It also references `nixfmt`, which is only on PATH inside `nix develop`.
 - `home/anki/app.nix` builds a tiny `Anki.app` that execs the home-manager `anki` wrapper so launches from Finder/Spotlight use the configured profile and addons.
