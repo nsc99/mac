@@ -8,13 +8,14 @@
     home = "/Users/${user}";
   };
 
-  system.primaryUser = user;
-
   home-manager.users.${user} = ../../home;
 
-  # Set Git commit hash for darwin-version.
-  system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 6;
+  system = {
+    primaryUser = user;
+    # Set Git commit hash for darwin-version.
+    configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
+    # Used for backwards compatibility, please read the changelog before changing.
+    # $ darwin-rebuild changelog
+    stateVersion = 6;
+  };
 }
