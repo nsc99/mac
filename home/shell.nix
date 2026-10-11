@@ -26,6 +26,7 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
+    presets = [ "plain-text-symbols" ];
   };
 
   home.sessionVariables.EDITOR = "vim";
