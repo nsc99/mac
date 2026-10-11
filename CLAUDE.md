@@ -61,3 +61,10 @@ New program → add `home/<name>.nix`, import it in `home/default.nix`, `git add
 - `home/vscode/settings.json` points nixd at `darwinConfigurations.mac` for option completion; renaming the config breaks that. It also references `nixfmt`, which is only on PATH inside `nix develop`.
 - `home/lab.nix` holds the tooling for administrating the homelab cluster (`~/repos/lab`): kubectl/flux/helm/k9s, the `*.lab` SSH block for `operator`, and the admin kubeconfig from secret `kube/lab` at `~/.kube/lab`.
 - `home/anki/app.nix` builds a tiny `Anki.app` that execs the home-manager `anki` wrapper so launches from Finder/Spotlight use the configured profile and addons.
+
+## Shared brain
+
+Multi-agent knowledge shared across `~/repos`; rules in `~/repos/brain/RULES.md`.
+
+@~/repos/brain/RULES.md
+@~/repos/brain/INDEX.md
