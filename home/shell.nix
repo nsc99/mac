@@ -27,6 +27,8 @@
     enable = true;
     enableZshIntegration = true;
     presets = [ "plain-text-symbols" ];
+    # Show the current kube context and namespace (the module is off by default).
+    settings.kubernetes.disabled = false;
   };
 
   home.sessionVariables.EDITOR = "vim";
