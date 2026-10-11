@@ -7,6 +7,7 @@ in
   home.packages = with pkgs; [
     kubectl
     kubectx
+    kubecm
     fluxcd
     kubernetes-helm
     kustomize
