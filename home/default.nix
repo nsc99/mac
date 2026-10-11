@@ -7,6 +7,7 @@
     ./sops.nix
     ./anki
     ./vscode
+    ./claude-code
     ./apps.nix
   ];
 
