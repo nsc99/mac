@@ -1,0 +1,25 @@
+{
+    "workbench.colorTheme": "Default High Contrast",
+
+    "chat.disableAIFeatures": true,
+    
+    "files.autoSave": true,
+
+    "nix.enableLanguageServer": true,
+    "nix.serverPath": "nixd",
+    "nix.serverSettings": {       
+        "nixd": {
+            "formatting": {
+                "command": ["nixfmt"]
+            },
+            "options": {
+                "nix-darwin": {
+                    "expr": "(builtins.getFlake \"${workspaceFolder}\").darwinConfigurations.mac.options"
+                },
+                "home-manager": {
+                    "expr": "(builtins.getFlake \"${workspaceFolder}\").darwinConfigurations.mac.options.home-manager.users.type.getSubOptions []"
+                }
+            }
+        }
+    }
+}

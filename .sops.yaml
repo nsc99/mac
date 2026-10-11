@@ -1,0 +1,7 @@
+keys:
+  - &mac age10gzj30y0wv32y040ymu2k2u76eldtry335zg9rk58d54algtp40sjgmrf4
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *mac
