@@ -15,6 +15,12 @@
         "colored-man-pages"
       ];
     };
+
+    # zsh binds ^U to kill-whole-line; make it kill only what's left of the
+    # cursor so Ghostty's cmd+backspace behaves like it does in macOS text fields.
+    initContent = ''
+      bindkey '^U' backward-kill-line
+    '';
   };
 
   programs.starship = {
