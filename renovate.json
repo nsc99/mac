@@ -1,9 +1,22 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", ":semanticCommits"],
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    "helpers:pinGitHubActionDigestsToSemver"
+  ],
   "nix": { "enabled": true },
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["every weekend"]
-  }
+  },
+  "packageRules": [
+    {
+      "description": "Bundle CI action updates (incl. digest bumps of @main refs) into one weekend PR",
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions",
+      "semanticCommitType": "ci",
+      "schedule": ["every weekend"]
+    }
+  ]
 }
