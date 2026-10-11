@@ -39,6 +39,20 @@
           nixfmt.enable = true;
           statix.enable = true;
           deadnix.enable = true;
+          # Reject AI attribution trailers (see CLAUDE.md).
+          no-co-authored-by = {
+            enable = true;
+            name = "no Co-Authored-By trailer";
+            stages = [ "commit-msg" ];
+            entry = toString (
+              pkgs.writeShellScript "no-co-authored-by" ''
+                if grep -qi '^co-authored-by:' "$1"; then
+                  echo "Commit message contains a Co-Authored-By trailer; remove it." >&2
+                  exit 1
+                fi
+              ''
+            );
+          };
         };
       };
     in

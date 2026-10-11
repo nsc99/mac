@@ -41,7 +41,7 @@ sops secrets/secrets.yaml
 - `hosts/<hostname>/default.nix` holds machine-specific settings (platform, user account, `stateVersion`) and is where `home-manager.users.${user}` is pointed at `home/`.
 - `modules/darwin/` is system-level config; `default.nix` imports each file. `home-manager.nix` there wires in home-manager and sops-nix (both darwin and HM modules) and forwards `inputs` to HM via `extraSpecialArgs`.
 - `home/` is home-manager config; `home/default.nix` imports one file (or directory with `default.nix`) per program. Non-Nix assets live next to the module that uses them (e.g. `home/vscode/settings.json`).
-- `flake.nix` also defines `formatter` (nixfmt), `checks.pre-commit` and a dev shell via git-hooks.nix; the hook runs nixfmt, statix and deadnix on staged files.
+- `flake.nix` also defines `formatter` (nixfmt), `checks.pre-commit` and a dev shell via git-hooks.nix; the pre-commit hook runs nixfmt, statix and deadnix on staged files, and a commit-msg hook rejects `Co-Authored-By` trailers.
 - `overlays/default.nix` is a single overlay applied in `modules/darwin/nix.nix`; with `useGlobalPkgs = true` it also applies to home-manager.
 - Secrets: `secrets/secrets.yaml` is sops-encrypted (rules in `.sops.yaml`). Modules declare `sops.secrets.<name>.key = "path/in/yaml"` and consume `config.sops.secrets.<name>.path` (see `home/anki/default.nix`). Never commit it decrypted.
 
