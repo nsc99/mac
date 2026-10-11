@@ -39,6 +39,11 @@ sops secrets/secrets.yaml
 
 New program → add `home/<name>.nix`, import it in `home/default.nix`, `git add`, build.
 
+## Commits
+
+- Conventional commits: `type(scope): subject` (e.g. `feat(ghostty): ...`, `chore: ...`), one logical change per commit, each commit must build on its own.
+- No `Co-Authored-By` or other AI attribution trailers in commit messages.
+
 ## Gotchas
 
 - Many nixpkgs GUI apps are Linux-only from source on darwin; check `meta.platforms` and look for a `-bin` variant (Ghostty uses `pkgs.ghostty-bin`).
