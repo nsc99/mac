@@ -9,6 +9,7 @@
     ./vscode
     ./claude-code
     ./apps.nix
+    ./lab.nix
   ];
 
   home.stateVersion = "26.05";
