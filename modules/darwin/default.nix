@@ -5,5 +5,6 @@
     ./homebrew.nix
     ./security.nix
     ./home-manager.nix
+    ./defaults.nix
   ];
 }
