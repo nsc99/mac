@@ -1,6 +1,10 @@
 # Minimal Anki.app bundle that execs the home-manager anki wrapper,
 # so Spotlight/Dock launches pick up the configured profile and addons.
-{ runCommandCC, anki, config }:
+{
+  runCommandCC,
+  anki,
+  config,
+}:
 runCommandCC "anki-app" { } ''
   app=$out/Applications/Anki.app/Contents
   mkdir -p $app/MacOS

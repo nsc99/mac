@@ -10,20 +10,23 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = inputs@{ nix-darwin, ... }:
-  let
-    mkDarwin = { hostname, user }: nix-darwin.lib.darwinSystem {
-      specialArgs = { inherit inputs user; };
-      modules = [
-        ./hosts/${hostname}
-        ./modules/darwin
-      ];
+  outputs =
+    inputs@{ nix-darwin, ... }:
+    let
+      mkDarwin =
+        { hostname, user }:
+        nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs user; };
+          modules = [
+            ./hosts/${hostname}
+            ./modules/darwin
+          ];
+        };
+    in
+    {
+      darwinConfigurations."mac" = mkDarwin {
+        hostname = "mac";
+        user = "nsc99";
+      };
     };
-  in
-  {
-    darwinConfigurations."mac" = mkDarwin {
-      hostname = "mac";
-      user = "nsc99";
-    };
-  };
 }
