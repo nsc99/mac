@@ -32,9 +32,9 @@ in
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks."*.lab" = {
-      user = "operator";
-      identityFile = "~/.ssh/id_ed25519";
+    settings."*.lab" = {
+      User = "operator";
+      IdentityFile = "~/.ssh/id_ed25519";
     };
   };
 }
