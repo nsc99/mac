@@ -6,14 +6,7 @@ in
 {
   home.packages = with pkgs; [
     kubectl
-    kubectx
     kubecm
-    fluxcd
-    kubernetes-helm
-    kustomize
-    kubeconform
-    # VM for the lab repo's local test cluster (local/cluster.sh).
-    lima
     # lab encrypts to the same age key as this repo (the `operator` key);
     # ssh-to-age derives host age keys for its .sops.yaml.
     age
