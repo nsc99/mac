@@ -12,6 +12,8 @@
         "super+backspace=text:\\x15"
         # cmd+fn+backspace (cmd+forward-delete): delete from cursor to end of line (^K)
         "super+delete=text:\\x0b"
+        # opt+fn+backspace (opt+forward-delete): delete the word after the cursor (ESC d)
+        "alt+delete=esc:d"
         # cmd+shift+arrows: move focus between splits (cmd+d)
         "super+shift+left=goto_split:left"
         "super+shift+right=goto_split:right"
