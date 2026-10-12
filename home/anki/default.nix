@@ -21,7 +21,7 @@
           good_button_name = "splendid";
         };
       })
-      pkgs.ankiAddons.yomichan-forvo-server
+      (pkgs.callPackage ./local-audio.nix { })
       (pkgs.callPackage ./speed-focus-mode.nix { })
     ];
   };
