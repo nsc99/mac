@@ -28,7 +28,13 @@
     enableZshIntegration = true;
     presets = [ "plain-text-symbols" ];
     # Show the current kube context and namespace (the module is off by default).
-    settings.kubernetes.disabled = false;
+    # Blue so it stands apart from the (cyan) directory; "k8s" overrides the
+    # preset's "kubernetes " symbol.
+    settings.kubernetes = {
+      disabled = false;
+      symbol = "k8s ";
+      style = "bold blue";
+    };
   };
 
   home.sessionVariables.EDITOR = "vim";
