@@ -4,6 +4,7 @@
     ./git.nix
     ./gh.nix
     ./ghostty.nix
+    ./rectangle.nix
     ./sops.nix
     ./anki
     ./vscode
