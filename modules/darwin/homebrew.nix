@@ -4,6 +4,7 @@
     casks = [
       "firefox"
       "claude"
+      "tailscale-app"
     ];
     onActivation.cleanup = "zap";
   };
