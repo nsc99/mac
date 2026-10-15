@@ -23,6 +23,10 @@
         "super+shift+right=text:\\x02\\x1b[C"
         "super+shift+up=text:\\x02\\x1b[A"
         "super+shift+down=text:\\x02\\x1b[B"
+        # opt+tab / opt+shift+tab: open tmux's session picker, then navigate it.
+        # These send prefix+Tab / prefix+BackTab; see tmux.nix.
+        "alt+tab=text:\\x02\\x09"
+        "alt+shift+tab=text:\\x02\\x1b[Z"
       ];
     };
   };
