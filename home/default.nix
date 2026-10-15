@@ -1,6 +1,7 @@
 {
   imports = [
     ./shell.nix
+    ./tmux.nix
     ./git.nix
     ./gh.nix
     ./ghostty.nix
