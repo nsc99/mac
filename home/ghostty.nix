@@ -14,11 +14,15 @@
         "super+delete=text:\\x0b"
         # opt+fn+backspace (opt+forward-delete): delete the word after the cursor (ESC d)
         "alt+delete=esc:d"
-        # cmd+shift+arrows: move focus between splits (cmd+d)
-        "super+shift+left=goto_split:left"
-        "super+shift+right=goto_split:right"
-        "super+shift+up=goto_split:up"
-        "super+shift+down=goto_split:down"
+        # Send tmux's default prefix (^B) followed by its pane commands.
+        # cmd+d: split right; cmd+shift+d: split down.
+        "super+d=text:\\x02%"
+        "super+shift+d=text:\\x02\\x22"
+        # cmd+shift+arrows: move focus between tmux panes.
+        "super+shift+left=text:\\x02\\x1b[D"
+        "super+shift+right=text:\\x02\\x1b[C"
+        "super+shift+up=text:\\x02\\x1b[A"
+        "super+shift+down=text:\\x02\\x1b[B"
       ];
     };
   };
