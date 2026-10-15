@@ -18,6 +18,8 @@
         # cmd+d: split right; cmd+shift+d: split down.
         "super+d=text:\\x02%"
         "super+shift+d=text:\\x02\\x22"
+        # cmd+shift+enter: toggle tmux pane zoom (^B z).
+        "super+shift+enter=text:\\x02z"
         # cmd+shift+arrows: move focus between tmux panes.
         "super+shift+left=text:\\x02\\x1b[D"
         "super+shift+right=text:\\x02\\x1b[C"
