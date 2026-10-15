@@ -10,5 +10,12 @@
   programs.codex = {
     enable = true;
     context = ./AGENTS.md;
+    # Preserve settings Codex writes while enforcing these Nix-managed defaults.
+    mutableSettings = true;
+    settings = {
+      approval_policy = "on-request";
+      approvals_reviewer = "auto_review";
+      sandbox_mode = "workspace-write";
+    };
   };
 }
