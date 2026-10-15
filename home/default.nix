@@ -8,7 +8,7 @@
     ./sops.nix
     ./anki
     ./vscode
-    ./claude-code
+    ./ai
     ./apps.nix
     ./lab.nix
   ];

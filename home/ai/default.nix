@@ -6,4 +6,9 @@
     # Symlinked into ~/.claude/agents/; they share the brain at ~/repos/brain.
     agentsDir = ./agents;
   };
+
+  programs.codex = {
+    enable = true;
+    context = ./AGENTS.md;
+  };
 }

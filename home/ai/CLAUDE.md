@@ -1,0 +1,1 @@
+USE AGENTS.md as replacement for CLAUDE.md
