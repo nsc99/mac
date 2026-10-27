@@ -1,5 +1,8 @@
 {
     "workbench.colorTheme": "Solarized Light",
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredLightColorTheme": "Solarized Light",
+    "workbench.preferredDarkColorTheme": "Solarized Dark",
 
     "chat.disableAIFeatures": true,
     
