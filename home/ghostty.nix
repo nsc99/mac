@@ -6,7 +6,7 @@
     package = pkgs.ghostty-bin;
     settings = {
       theme = "dark:Flexoki Dark,light:Flexoki Light";
-      background-opacity = 0.85;
+      background-opacity = 0.9;
       background-blur = true;
       keybind = [
         # cmd+backspace: delete from cursor to start of line (^U)
