@@ -5,6 +5,7 @@
     # The source-built `ghostty` package is Linux-only.
     package = pkgs.ghostty-bin;
     settings = {
+      theme = "dark:Flexoki Dark,light:Flexoki Light";
       background-opacity = 0.85;
       background-blur = true;
       keybind = [
