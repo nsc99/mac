@@ -14,6 +14,7 @@
 
   outputs =
     inputs@{
+      self,
       nixpkgs,
       nix-darwin,
       git-hooks,
@@ -60,6 +61,12 @@
       darwinConfigurations."mac" = mkDarwin {
         hostname = "mac";
         user = "nsc99";
+      };
+
+      # What CI builds: mac without the local audio add-on, whose
+      # requireFile archive is only in the store on the real machine.
+      darwinConfigurations."mac-ci" = self.darwinConfigurations.mac.extendModules {
+        modules = [ ({ user, ... }: { home-manager.users.${user}.anki.localAudio = false; }) ];
       };
 
       formatter.${system} = pkgs.nixfmt;

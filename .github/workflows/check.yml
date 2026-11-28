@@ -21,4 +21,5 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       # Pre-commit hooks (nixfmt, statix, deadnix) on all files.
       - run: nix flake check
-      - run: nix build .#darwinConfigurations.mac.system --no-link
+      # mac-ci drops the local audio add-on (requireFile, see home/anki).
+      - run: nix build .#darwinConfigurations.mac-ci.system --no-link
