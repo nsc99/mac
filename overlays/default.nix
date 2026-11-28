@@ -14,10 +14,12 @@ _final: prev: {
           '';
       });
 
-      # Temporary: helper's own metadata says 0.1.1, derivation uses Anki's version
-      anki-mac-helper = pyPrev.anki-mac-helper.overridePythonAttrs {
-        dontCheckPythonMetadata = true;
-      };
+      anki-mac-helper = pyPrev.anki-mac-helper.overridePythonAttrs (old: {
+        # nixpkgs now uses the upstream helper version, so rewriting it is redundant.
+        nativeBuildInputs = prev.lib.filter (
+          input: input != pyPrev.pyprojectVersionPatchHook
+        ) old.nativeBuildInputs;
+      });
     })
   ];
 }
